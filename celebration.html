@@ -2,230 +2,122 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ Mobile scaling -->
-  <title>Happy Birthday Nico!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Nico 🎉</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom right, #5a1414, #000000);
-      color: #ffffff;
+      color: white;
       text-align: center;
       overflow-x: hidden;
-      position: relative;
     }
 
-    header {
-      padding: 2rem 1rem;
-      background: rgba(0,0,0,0.6);
-      border-bottom: 4px solid #ffb612;
-    }
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
       color: #ffb612;
+      margin-top: 1rem;
       text-shadow: 2px 2px #5a1414;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* ✅ Flexible columns */
-      gap: 1rem;
-      padding: 1.5rem;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      width: 90%;
+      max-width: 600px; /* ✅ keeps nice size on desktop */
     }
 
     .gallery img {
-      width: 100%;
-      height: auto;              /* ✅ keeps natural aspect ratio */
-      max-height: 350px;         /* ✅ prevent giant verticals */
-      object-fit: cover;         /* ✅ no black bars */
+      max-width: 100%;   /* ✅ scales to screen size */
+      height: auto;      /* ✅ keeps true proportions */
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      cursor: pointer;
-      transition: transform 0.3s ease;
       border: 3px solid #ffb612;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      margin-top: 2rem;
-      padding: 1rem;
-      background: #5a1414;
-      border-top: 4px solid #ffb612;
-      font-size: 0.9rem;
-    }
-
-    /* Slideshow modal */
-    .slideshow {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.95);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 1rem;
-    }
-    .slideshow img {
-      width: 90%;
-      max-width: 800px;       /* ✅ prevent stretching on desktop */
-      max-height: 80vh;
-      border-radius: 15px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.7);
-      border: 4px solid #ffb612;
-    }
-    .slideshow button {
-      margin: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #ffb612;
-      color: #5a1414;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    .slideshow button:hover {
-      background: #ffffff;
-      color: #5a1414;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      object-fit: contain; /* ✅ prevents cropping */
     }
 
     /* Balloons */
     .balloon {
       position: absolute;
       bottom: -150px;
-      width: 50px;
-      height: 70px;
+      width: 60px;
+      height: 80px;
       border-radius: 50%;
-      opacity: 0.7;
-      animation: float 6s linear infinite;
-      z-index: 5;
+      background: #ffb612;
+      opacity: 0.8;
+      animation: rise 8s linear infinite;
     }
-    .balloon::after {
-      content: "";
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      width: 2px;
-      height: 20px;
-      background: white;
-      transform: translateX(-50%);
-    }
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-110vh) scale(1.1); }
+
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 0.9; }
+      100% { transform: translateY(-110vh); opacity: 0; }
     }
 
     /* Confetti */
     .confetti {
       position: absolute;
-      top: -20px;
       width: 10px;
       height: 10px;
-      background: yellow;
-      animation: fall 3s linear forwards;
-      z-index: 10;
-    }
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+      background: red;
+      animation: fall 4s linear infinite;
     }
 
-    /* ✅ Responsive tweaks */
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .gallery { grid-template-columns: 1fr; }  /* stack images on small screens */
-      .gallery img { max-height: 250px; }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🏈 Happy Birthday, Nico! 🎉</h1>
-  </header>
+  <h1>🎉 Happy Birthday Nico 🎉</h1>
 
-  <section class="gallery">
-    <!-- Original photos -->
+  <div class="gallery">
+    <!-- Replace with your actual images -->
     <img src="images/baby nico.jpg" alt="Baby Nico">
-    <img src="images/bri and nico.jpg" alt="Bri and Nico">
+    <img src="images/cute pic lol.jpg" alt="Cute Pic">
     <img src="images/cat meme.jpg" alt="Cat Meme">
-    <!-- New meme slots -->
-    <img src="https://scontent-dfw5-3.xx.fbcdn.net/v/t39.30808-6/484907858_1045941814243509_8599013024169600983_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=cPfagdwnWMkQ7kNvwGoT3vW&_nc_oc=Admm9M8z0_wM2bfDbkqxfrvUtXK-ciSbvV2uO6Br8oQqY8DqHd_-pdLoxB-sKwK1VVY&_nc_zt=23&_nc_ht=scontent-dfw5-3.xx&_nc_gid=KalsWID_cmSWRpyvWa0XLg&oh=00_AfUbsAtDN64kNvlc3vbeXR18THL_HijPtp5vBR6CNGCqjA&oe=68B37B53" alt="commanders meme">
-    <img src="https://i.redd.it/x9zb2tkv4ml61.jpg" alt="halo birthday">
-    <img src="https://pa1.aminoapps.com/5747/f7a1f9190551be3ff359e9f81c62ced9dd547d84_hq.gif" alt="minecraft dancing gif">
-  </section>
-
-  <!-- Slideshow modal -->
-  <div class="slideshow" id="slideshow">
-    <button onclick="prevSlide()">⬅️ Prev</button>
-    <img id="slideshow-img" src="" alt="Slideshow Image">
-    <button onclick="nextSlide()">Next ➡️</button>
-    <button onclick="closeSlideshow()">❌ Close</button>
+    <img src="https://scontent-dfw5-3.xx.fbcdn.net/v/t39.30808-6/484907858_1045941814243509_8599013024169600983_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=cPfagdwnWMkQ7kNvwGoT3vW&_nc_oc=Admm9M8z0_wM2bfDbkqxfrvUtXK-ciSbvV2uO6Br8oQqY8DqHd_-pdLoxB-sKwK1VVY&_nc_zt=23&_nc_ht=scontent-dfw5-3.xx&_nc_gid=KalsWID_cmSWRpyvWa0XLg&oh=00_AfUbsAtDN64kNvlc3vbeXR18THL_HijPtp5vBR6CNGCqjA&oe=68B37B53" alt="Meme 1">
+    <img src="https://i.redd.it/x9zb2tkv4ml61.jpg" alt="Meme 2">
+    <img src="https://pa1.aminoapps.com/5747/f7a1f9190551be3ff359e9f81c62ced9dd547d84_hq.gif" alt="Meme 3">
   </div>
 
-  <footer>
-    <p>Made with ❤️ & gold by Briana for Nico</p>
-  </footer>
-
   <script>
-    // Balloon animation
-    for (let i = 0; i < 12; i++) {
-      let balloon = document.createElement("div");
+    // 🎈 Generate Balloons
+    function createBalloon() {
+      const balloon = document.createElement("div");
       balloon.classList.add("balloon");
       balloon.style.left = Math.random() * 100 + "vw";
-      balloon.style.background = `hsl(${Math.random()*360},70%,60%)`;
-      balloon.style.animationDuration = 5 + Math.random() * 5 + "s";
+      balloon.style.background = ["#ffb612", "#ffffff", "#5a1414"][Math.floor(Math.random() * 3)];
+      balloon.style.animationDuration = (6 + Math.random() * 4) + "s";
       document.body.appendChild(balloon);
+
       setTimeout(() => balloon.remove(), 10000);
     }
+    setInterval(createBalloon, 800);
 
-    // Confetti animation
-    for (let i = 0; i < 100; i++) {
-      let confetti = document.createElement("div");
+    // 🎊 Generate Confetti
+    function createConfetti() {
+      const confetti = document.createElement("div");
       confetti.classList.add("confetti");
       confetti.style.left = Math.random() * 100 + "vw";
-      confetti.style.background = `hsl(${Math.random()*360},70%,60%)`;
-      confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
+      confetti.style.background = ["#ffb612", "#ffffff", "#5a1414"][Math.floor(Math.random() * 3)];
+      confetti.style.animationDuration = (2 + Math.random() * 3) + "s";
       document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 4000);
+
+      setTimeout(() => confetti.remove(), 5000);
     }
-
-    // Slideshow logic
-    const images = [...document.querySelectorAll('.gallery img')];
-    const slideshow = document.getElementById("slideshow");
-    const slideshowImg = document.getElementById("slideshow-img");
-    let currentIndex = 0;
-
-    images.forEach((img, index) => {
-      img.addEventListener("click", () => {
-        currentIndex = index;
-        openSlideshow();
-      });
-    });
-
-    function openSlideshow() {
-      slideshow.style.display = "flex";
-      slideshowImg.src = images[currentIndex].src;
-    }
-
-    function closeSlideshow() {
-      slideshow.style.display = "none";
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % images.length;
-      slideshowImg.src = images[currentIndex].src;
-    }
-
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      slideshowImg.src = images[currentIndex].src;
-    }
+    setInterval(createConfetti, 200);
   </script>
 </body>
 </html>

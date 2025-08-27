@@ -24,7 +24,7 @@
 
     img.header-img {
       margin-top: 1rem;
-      width: 250px;   /* ✅ adjust to your liking */
+      width: 250px;
       max-width: 80%;
       border-radius: 15px;
       border: 3px solid #ffb612;
@@ -59,24 +59,21 @@
 <body>
   <h1>🎂 Welcome Nico 🎂</h1>
 
-  <!-- ✅ Add your chosen photo here -->
+  <!-- ✅ Replace with the new image -->
   <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/904/619/b83.gif" alt="Special Image" class="header-img">
 
   <div class="message">
     <h2>Briana has a surprise for you 💌</h2>
-    <p>Keep clicking the button to find out… 😉</p>
+    <p>Click the button to find out… 😉</p>
   </div>
 
   <button id="trickButton">Click Me</button>
 
   <script>
     const button = document.getElementById("trickButton");
-
     button.addEventListener("click", () => {
-      // Instead of counting, just redirect after a random number of clicks (between 5–15 for fun)
-      if (Math.random() > 0.85) {  
-        window.location.href = "celebration.html";
-      }
+      // ✅ Redirect immediately on first click
+      window.location.href = "celebration.html";
     });
   </script>
 </body>
